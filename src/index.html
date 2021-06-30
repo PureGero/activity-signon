@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <title><%= title %></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+
+    <meta name="description" content="Online sign on site for activites">
+    <meta property="og:title" content="<%= title %>">
+    <meta property="og:description" content="%description%">
+    <meta property="og:image" content="assets/background.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script src="https://kit.fontawesome.com/a8132e88a5.js" crossorigin="anonymous" async></script>
+
+    <script>
+      const config = JSON.parse('<%= JSON.stringify(htmlWebpackPlugin.options.templateParameters) %>');
+    </script>
+
+  </head>
+
+  <body>
+        
+    <div class="header__border">
+        <div class="header__container">
+            <header>
+                <img src="favicon.png" alt="Ethan Bulmer's logo"/>
+                Ethan Bulmer
+            </header>
+
+            <nav aria-labelledby="mainnavigation">
+                <h2 id="mainnavigation" class="visuallyhidden">Main Navigation</h2>
+                <ul>
+                    <li><a href="./">Home</a></li>
+                    <li><a href="./#projects" aria-current="page">Projects</a></li>
+                    <li><a href="./#experiments">Experiments</a></li>
+                    <li><a href="./#languages">Languages</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main aria-labelledby="sportselection">
+        <h1 id="sportselection">Sport Selection by Ethan Bulmer</h1>
+        <p>First-in, first-served student sport selection website</p>
+        <p>Students log into the website during a set opening window and enrol into the sport of their choice</p>
+
+        <section aria-labelledby="selectionpage">
+            <div class="description">
+                <h2 id="selectionpage">Selection Made Easy</h2>
+                <ul>
+                    <li>Students are sent an email containing a link to log into the site</li>
+                    <li>Student see the list of sports, enrol into the one they want, and they're done</li>
+                    <li>First in first served selection process</li>
+                    <li>Customised themes for each school to make students feel at home</li>
+                    <li>Works on mobile devices</li>
+                </ul>
+            </div>
+            <img src="images/sport_selection_red.png" alt="Screenshot of selection page"/>
+        </section>
+
+        <section aria-labelledby="adminpage">
+            <div class="description">
+                <h2 id="adminpage">Simple Administration</h2>
+                <ul>
+                    <li>Simple, cascading design for intuitive use</li>
+                    <li>Restrict sports by year level and financial status</li>
+                    <li>Bulk import student emails from IDAttend</li>
+                    <li>Bulk export sport selections to csv</li>
+                    <li>Selections can also be made for teachers</li>
+                </ul>
+            </div>
+            <img src="images/sport_selection_admin.png" alt="Screenshot of admin page"/>
+        </section>
+        
+        <section aria-labelledby="specs">
+            <div class="description">
+                <h2 id="specs">Built with Node.js</h2>
+                <ul>
+                    <li>Front end built with HTML/CSS/JS</li>
+                    <li>Back end built with Node.js</li>
+                    <li>Designed to be fast and infinitely scalable</li>
+                </ul>
+            </div>
+            <img src="images/nodejs.png" alt="Node.js logo" style="padding: 10px"/>
+        </section>
+        
+        <section aria-labelledby="aws">
+            <div class="description">
+                <h2 id="aws">Powered by AWS</h2>
+                <ul>
+                    <li>Highly secure datacenter</li>
+                    <li>Designed for redundancy</li>
+                    <li>Scales instantly to meet any demand</li>
+                </ul>
+            </div>
+            <img src="images/aws.png" alt="Amazon web services logo" style="padding: 10px"/>
+        </section>
+        
+        <section aria-labelledby="demo">
+            <div class="center">
+                <p>
+                    Check out what it's like for a student to select a sport
+                </p>
+                <a id="demo" class="button demo__button" href="https://sportselection.ethanbulmer.com/?code=0cf6649c9f6c411f0577188c47866c7f:29bd9f5eb0090641fca9d40c8e83407635bcc45a4bc7a054fa93968dbc150564" target="_blank">View the Demo &gt;</a>
+            </div>
+        </section>
+
+        <section aria-labelledby="pricing">
+            <div class="pricing">
+                <h2 id="pricing">Pricing</h2>
+                <ul>
+                    <li>Blazing fast servers</li>
+                    <li>Selections any time</li>
+                    <li>Personalised theme</li>
+                    <li>Custom domain name</li>
+                </ul>
+                <div class="price">$0.75<small> /student /year</small></div>
+                <a class="button" href="mailto:ethan@ethanbulmer.com?subject=Sport Selection purchase interest" target="_blank">Contact us &gt;</a>
+            </div>
+        </section>
+
+        <section aria-labelledby="privacy">
+            <div class="center">
+                <a href="https://sportselection.ethanbulmer.com/privacy.html" id="privacy">Privacy policy</a>
+            </div>
+        </section>
+    </main>
+
+  </body>
+</html>

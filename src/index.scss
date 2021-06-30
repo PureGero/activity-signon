@@ -1,0 +1,217 @@
+
+/* MISC */
+
+/* Montserrat and Roboto fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+
+.visuallyhidden { 
+  position: absolute; 
+  overflow: hidden; 
+  clip: rect(0 0 0 0); 
+  height: 1px; width: 1px; 
+  margin: -1px; padding: 0; border: 0; 
+}
+
+html,
+body {
+  background: #f7fff7;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.header__border {
+  border-bottom: 1px solid rgb(21, 109, 21);
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 600px;
+  padding: 10px;
+}
+
+header {
+  align-items: center;
+  color: rgb(21, 109, 21);
+  display: flex;
+  font-size: 20px;
+}
+
+header img {
+  height: 28px;
+  margin: 4px;
+}
+
+nav {
+  height: 100%;
+}
+
+nav ul {
+  align-items: center;
+  display: flex;
+  list-style: none;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: black;
+  font-size: 14px;
+  padding: 15px 0px 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+nav a:hover,
+nav a[aria-current=page] {
+    border-bottom: 1px solid black;
+    margin-bottom: -1px;
+}
+
+@media only screen and (max-width: 520px) {
+  nav {
+    display: none;
+  }
+}
+
+h1 {
+  font-size: 24px;
+  margin: 32px;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+main {
+  margin: auto;
+  max-width: 700px;
+}
+
+main section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 25px 0;
+  padding: 25px;
+}
+
+main .description {
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+main .center {
+  margin: auto;
+}
+
+main h2 {
+  font-size: 20px;
+  margin-left: 40px;
+}
+
+main li {
+  margin: 0 0 5px 0;
+}
+
+@media only screen and (min-width: 700px) {
+  main section {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+  
+  main section:nth-child(2n - 1) {
+      flex-direction: row-reverse;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  main section {
+      padding: 25px calc((100% - 800px)/2);
+  }
+  
+  main section.multiple-images div {
+      padding: 0 100px;
+  }
+}
+
+main img {
+  background-color: white;
+  box-shadow: 0px 0px 10px 0px #888;
+  box-sizing: border-box;
+  margin: 0 20px;
+  width: 250px;
+}
+
+.pricing {
+  background-color: white;
+  box-shadow: 0px 0px 10px 0px #888;
+  box-sizing: border-box;
+  display: block;
+  padding:  40px 30px 50px;
+  margin: 25px auto 100px;
+  width: 270px;
+}
+
+.pricing h2 {
+  margin: 10px;
+  font-size: 32px;
+  text-align: center;
+}
+
+.pricing ul {
+  font-size: 16px;
+  list-style: none;
+  margin: 40px 0;
+  margin-left: -16px;
+  padding-left: 0;
+}
+
+.pricing li {
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.pricing li:before {
+  color: green;
+  content: '✓';
+  margin: 8px;
+}
+
+.pricing .price {
+  font-size: 32px;
+  padding-left: 16px;
+  text-align: center;
+}
+
+.pricing .price small {
+  font-size: 13px;
+}
+
+main a.button {
+  background-color: #2196F3;
+  border: 2px solid #2196F3;
+  color: white;
+  display: block;
+  margin: 40px 10px 0;
+  opacity: 0.9;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+}
+
+main a.button:hover {
+  opacity: 1;
+}
+
+.demo__button {
+  margin: auto;
+  width: 300px;
+}
