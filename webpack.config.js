@@ -8,7 +8,9 @@ fs.rmdirSync(__dirname + '/dist', { recursive: true });
 
 const mode = 'development';
 
-const publicPath = 'https://cdn.activitysignon.com/';
+// Detect if building on AWS
+const isAWS = !!process.env.AWS_DEPLOY_BUCKET;
+const publicPath = isAWS ? 'https://cdn.activitysignon.com/' : '';
 
 const commitHash = require('child_process')
   .execSync('git rev-parse --short HEAD')
@@ -17,7 +19,6 @@ const commitHash = require('child_process')
 
 const config = {
   commitHash,
-  env: process.env,
   ...require('./config')
 };
 
@@ -84,7 +85,7 @@ const signonWebpack = {
   entry: __dirname + '/src/signon/signon.js',
   output: {
     path: __dirname + '/dist/signon',
-    publicPath: publicPath + 'signon/',
+    publicPath: isAWS ? (publicPath + 'signon/') : '',
     filename: 'bundle-[hash].js'
   },
   plugins: [
@@ -105,7 +106,7 @@ const adminWebpack = {
   entry: __dirname + '/src/admin/admin.js',
   output: {
     path: __dirname + '/dist/admin',
-    publicPath: publicPath + 'admin/',
+    publicPath: isAWS ? (publicPath + 'admin/') : '',
     filename: 'bundle-[hash].js'
   },
   plugins: [
