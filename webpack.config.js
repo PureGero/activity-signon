@@ -6,11 +6,11 @@ const fs = require('fs');
 
 fs.rmdirSync(__dirname + '/dist', { recursive: true });
 
-const mode = 'development';
-
 // Detect if building on AWS
 const isAWS = !!process.env.AWS_DEPLOY_BUCKET;
 const publicPath = isAWS ? 'https://cdn.activitysignon.com/' : '';
+
+const mode = isAWS ? 'production' : 'development';
 
 const commitHash = require('child_process')
   .execSync('git rev-parse --short HEAD')
