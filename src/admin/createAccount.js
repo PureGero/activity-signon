@@ -31,7 +31,8 @@ window.onSubmitCreateAccount = token => {
     if (err || json.error) {
       document.querySelector('.error').innerText = err || json.error;
     } else {
-      location.replace(location.pathname + '#createAccountSuccess');
+      location.assign(location.pathname + '#createAccountSuccess');
+      location.reload();
     }
   });
 };
