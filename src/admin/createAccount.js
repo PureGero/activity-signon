@@ -1,3 +1,5 @@
+import post from './post.js';
+
 export function renderCreateAccount() {
   const script = document.createElement('script');
   script.type = 'text/javascript';
@@ -8,6 +10,7 @@ export function renderCreateAccount() {
   document.querySelector('main').innerHTML = `
     <form>
       <h2 id="name">Create an account</h2>
+      <p class="error" aria-live="polite"></p>
       <label for="username">Email:</label>
       <input type="email" name="email" id="email" placeholder="Email" autofocus/>
       <label for="password">Password:</label>
@@ -19,7 +22,16 @@ export function renderCreateAccount() {
 }
 
 window.onSubmitCreateAccount = token => {
-  console.log('Success!')
-  console.log(token);
-  location.assign(location.pathname + '#createAccountSuccess');
+  const form = document.querySelector('form');
+  post('createAccount', {
+    email: form.email.value,
+    password: form.password.value,
+    token
+  }, (json, err) => {
+    if (err || json.error) {
+      document.querySelector('.error').innerText = err || json.error;
+    } else {
+      location.replace(location.pathname + '#createAccountSuccess');
+    }
+  });
 };
