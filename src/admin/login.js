@@ -5,7 +5,7 @@ export function login() {
   document.querySelector('.error').innerHTML = '';
   
   post(config.adminEndPoint + '?action=login&database=' + config.database, {
-    username: this.username.value,
+    email: this.email.value,
     password: this.password.value
   }, (json, err) => {
     if (err || json.error) {
