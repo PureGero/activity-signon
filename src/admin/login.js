@@ -12,7 +12,7 @@ export function login() {
       document.querySelector('.error').innerText = err || json.error;
       this.submit.innerHTML = 'Login';
     } else {
-      init(json.username);
+      init(json.email);
     }
   });
   
