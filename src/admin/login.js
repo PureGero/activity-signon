@@ -4,7 +4,7 @@ import { loadPeriodList } from './periodList.js';
 export function login() {
   document.querySelector('.error').innerHTML = '';
   
-  post(config.adminEndPoint + '?action=login&database=' + config.database, {
+  post('login', {
     email: this.email.value,
     password: this.password.value
   }, (json, err) => {
