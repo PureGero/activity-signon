@@ -22,9 +22,9 @@ export function login() {
   return false;
 }
 
-function init(username) {
+function init(email) {
   document.querySelector('h1').onclick = loadPeriodList;
-  document.getElementById('loginstatus').innerHTML = 'Logged in as ' + username;
+  document.getElementById('loginstatus').innerHTML = 'Logged in as ' + email;
   
   loadPeriodList();
 }
