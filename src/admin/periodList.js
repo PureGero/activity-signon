@@ -11,7 +11,7 @@ export function loadPeriodList() {
   document.querySelector('.sportlist').innerHTML = '';
   document.querySelector('main').innerHTML = '<h2 id="name">Loading period list...</h2>';
   
-  post(config.adminEndPoint + '?action=periodList&database=' + config.database, {}, (json, err) => {
+  post('periodList', {}, (json, err) => {
     if (err) {
       disconnect(err);
     } else {

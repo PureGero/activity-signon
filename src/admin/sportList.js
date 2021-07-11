@@ -13,7 +13,7 @@ export function loadPeriod() {
   document.querySelector('.sportlist').innerHTML = '<h2 id="sportlist">Loading...</h2>';
   document.querySelector('main').innerHTML = '<h2 id="name">Loading period...</h2>';
 
-  post(config.adminEndPoint + '?action=sportList&database=' + config.database, {
+  post('sportList', {
     periodid
   }, (json, err) => {
     if (err || json.error) {
@@ -65,7 +65,7 @@ export function renderSportList(json) {
 function submitPeriod() {
   const createText = this.submit.innerHTML;
 
-  post(config.adminEndPoint + '?action=createPeriod&database=' + config.database, {
+  post('createPeriod', {
     periodid: this.periodid.value,
     name: this.querySelector('#name').innerText,
     opens: new Date(this.opens.value).getTime(),

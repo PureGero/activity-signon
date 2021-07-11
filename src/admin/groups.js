@@ -30,7 +30,7 @@ export function updatePaidGroups(students, callback) {
 }
 
 export function requestGroups() {
-  post(config.adminEndPoint + '?action=groups&database=' + config.database, {}, (json, err) => {
+  post('groups', {}, (json, err) => {
     if (err || json.error) {
       throw err || json.error;
     } else {

@@ -11,7 +11,7 @@ export function loadSport() {
 
   document.querySelector('main').innerHTML = '<h2 id="name">Loading sport...</h2>';
 
-  post(config.adminEndPoint + '?action=sportInfo&database=' + config.database, {
+  post('sportInfo', {
     periodid: periodid,
     sportid: sportid
   }, (json, err) => {
@@ -90,7 +90,7 @@ function submitSport() {
     groups.push(checkbox.value);
   });
 
-  post(config.adminEndPoint + '?action=createSport&database=' + config.database, {
+  post('createSport', {
     sportid: this.sportid.value,
     periodid: this.periodid.value,
     name: this.querySelector('#name').innerText,
@@ -123,7 +123,7 @@ function deleteSport() {
   const periodid = form.periodid.value;
   const sportid = form.sportid.value;
 
-  post(config.adminEndPoint + '?action=deleteSport&database=' + config.database, {
+  post('deleteSport', {
     periodid,
     sportid
   }, (json, err) => {
@@ -149,7 +149,7 @@ function deleteUser() {
   const periodid = form.periodid.value;
   const sportid = form.sportid.value;
 
-  post(config.adminEndPoint + '?action=deleteUser&database=' + config.database, {
+  post('deleteUser', {
     periodid,
     sportid,
     user

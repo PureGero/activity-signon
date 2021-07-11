@@ -34,7 +34,7 @@ export function renderCreateNewPeriod() {
 function createPeriod() {
   const createText = this.submit.innerHTML;
 
-  post(config.adminEndPoint + '?action=createPeriod&database=' + config.database, {
+  post('createPeriod', {
     name: this.period_name.value,
     opens: new Date(this.opens.value).getTime(),
     closes: new Date(this.closes.value).getTime(),

@@ -102,7 +102,7 @@ function downloadSelections() {
   
   form.download.innerText = 'Downloading...';
 
-  post(config.adminEndPoint + '?action=downloadSelections&database=' + config.database, {
+  post('downloadSelections', {
     periodid: form.periodid.value
   }, (json, err) => {
     if (err || json.error) {

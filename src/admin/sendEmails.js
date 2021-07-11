@@ -6,7 +6,7 @@ export function sendEmails() {
 
   button.innerHTML = 'Sending...';
   
-  post(config.adminEndPoint + '?action=getEmailsToSend&database=' + config.database, {}, (json, err) => {
+  post('getEmailsToSend', {}, (json, err) => {
     if (err || json.error) {
       button.innerHTML = err || json.error;
     } else {
@@ -44,7 +44,7 @@ function sendEmail(emailsPerSecond, emailsToSend, r2pi, total, count, callback) 
     return;
   }
   
-  post(config.adminEndPoint + '?action=sendEmail&database=' + config.database, {
+  post('sendEmail', {
     emails,
     host: location.host,
     title: config.title,

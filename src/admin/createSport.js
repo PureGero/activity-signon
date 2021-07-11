@@ -49,7 +49,7 @@ function createSport() {
     groups.push(checkbox.value);
   });
 
-  post(config.adminEndPoint + '?action=createSport&database=' + config.database, {
+  post('createSport', {
     periodid: this.periodid.value,
     name: this.sport_name.value,
     maxusers: this.maxusers.value,
