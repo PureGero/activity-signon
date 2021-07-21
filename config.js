@@ -1,10 +1,10 @@
 module.exports = {
   title: 'Activity Signon',
-  lightColor: '#0094ff',
-  darkColor: '#0034ff',
-  darkNavColor: '#f0f0ff',
-  lightNavColor: '#f7f7ff',
-  plusColor: '#1e3a63',
-  hoverColor: '#00a4',
-  activeColor: '#00a2',
+  lightColor: '#249c40',
+  darkColor: '#144d29',
+  darkNavColor: '#f0fff0',
+  lightNavColor: '#f7fff7',
+  plusColor: '#3a631e',
+  hoverColor: '#0a04',
+  activeColor: '#0a02',
 };
