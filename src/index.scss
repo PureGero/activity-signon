@@ -21,6 +21,14 @@ body {
   width: 100%;
 }
 
+a {
+ color: green;
+}
+
+a:visited {
+  color: #050;
+}
+
 .header__border {
   border-bottom: 1px solid rgb(21, 109, 21);
 }
@@ -197,8 +205,8 @@ main img {
 }
 
 main a.button {
-  background-color: #2196F3;
-  border: 2px solid #2196F3;
+  background-color: #209403;
+  border: 2px solid #209403;
   color: white;
   display: inline-block;
   margin: 40px 10px 0;
