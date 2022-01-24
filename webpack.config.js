@@ -4,7 +4,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const jsToScss = require('./utils/jsToScss.js');
 const fs = require('fs');
 
-fs.rmdirSync(__dirname + '/dist', { recursive: true });
+if (fs.existsSync(__dirname + '/dist')) {
+  fs.rmdirSync(__dirname + '/dist', { recursive: true });
+}
 
 // Detect if building on AWS
 const isAWS = !!process.env.AWS_DEPLOY_BUCKET;
