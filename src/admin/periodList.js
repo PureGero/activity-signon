@@ -26,37 +26,22 @@ export function renderPeriodList(json) {
   if (document.querySelector('.periodlist').innerHTML.indexOf('Loading...') >= 0) {
     // Render main aswell
     document.querySelector('main').innerHTML = `
-      <h2 id="name">Getting started</h2>
-      <h3>1. Upload student emails</h3>
-      <p>Upload a csv containing emails and year levels.<br/>The students will be emailed a link they can use to log into ${location.host}.</p>
-      <a href="How to generate a csv of EQIDs Birthdays and Year levels in IDAttend.pdf" target="_blank">How to generate this in IDAttend<sup class="fas fa-external-link-alt"></sup></a>
-      <p id="studentDataError"></p>
-      <input type="file" id="studentDataUpload" accept="text/csv"/>
-      <small>Note: For EQ schools, an MISID will suffice for the email</small><br/>
-      <small>Privacy Note: Only the emails and year levels will be uploaded to the server. Any other data will be filtered out.</small>
-      <h3>2. Upload paid students (optional)</h3>
-      <p>Upload a csv containing emails of students who have paid.</p>
-      <p id="paidDataError"></p>
-      <input type="file" id="paidStudentDataUpload" accept="text/csv"/>
-      <small>Privacy Note: Only the student emails will be uploaded to the server. Any other data will be filtered out.</small>
-      <h3>3. Upload teachers (optional)</h3>
-      <p>Upload a csv containing emails of teachers.</p>
-      <a href="How to export teacher emails in IDAttend.pdf" target="_blank">How to generate this in IDAttend<sup class="fas fa-external-link-alt"></sup></a>
-      <p id="teacherDataError"></p>
-      <input type="file" id="teacherDataUpload" accept="text/csv"/>
-      <small>Privacy Note: Only the teacher emails will be uploaded to the server. Any other data will be filtered out.</small>
-      <h3>4. Create a period</h3>
-      <p>On the top left, click 'New Period' to create a selection period.</p>
-      <h3>5. Create a sport</h3>
-      <p>After clicking on your newly created period on the left, a 'New Sport' button will appear to the right of it. Click it to create a sport.</p>
-      <h3>6. Send login codes</h3>
-      <p>Click the button below to send login codes to all users for accessing the site.</p>
+      <h2 id="name">Activity Signon</h2>
+      <h3>Manage groups</h3>
+      <p>Add user email addresses to groups to allow them access to activities.</p>
+      <p>Viewing group <select id="groups">
+        <option value="Users">Users</option>
+        <option value="createNewGroup">+ Create new group</option>
+      </select></p>
+      
+      <h3>Send login codes</h3>
+      <p>Send login codes to all email addresses.</p>
       <button id="sendEmails" class="download" type="button">Send login codes <i class="fas fa-paper-plane"></i></button>
-      <small>This will send <span id="emailsToSend"></span> emails</small><br/>
-      <small>Note: It may take a few minutes for emails to send</small>
-      <h3>User counts</h3>
-      <p>The counts of users in each group, for verifying the upload worked successfully</p>
-      <p id="studentCounts"></p>
+      <small>Warning: Tell the users to check their spam folder!</small>
+      <small>Note: It may take a few minutes to send all emails</small>
+      <small>Note: This won't send an email to addresses that have been emailed in the past 30 days</small>
+      <p>Or, send a login code to a single email address.</p>
+      <input id="sendSingleEmail" type="text" placeholder="Email"/>
       `;
     document.querySelector('.periodlist').innerHTML = '<h2 id="periodlist" class="visuallyhidden">Period List</h2><ul></ul>';
     document.getElementById('studentDataUpload').onchange = uploadStudentData;
