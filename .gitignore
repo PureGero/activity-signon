@@ -5,3 +5,4 @@ dist
 .firebase
 *.sh
 temp
+pnpm-lock.yaml

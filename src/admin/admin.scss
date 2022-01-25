@@ -191,6 +191,15 @@ main ul label {
   display: inline;
 }
 
+.createaccount input,
+.createaccount button {
+  width: 400px;
+}
+
+.createaccount #billingaddress1 {
+  margin-bottom: 0;
+}
+
 .delete {
   background-color: #f44336;
   border: 2px solid #f44336;
