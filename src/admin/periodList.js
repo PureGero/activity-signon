@@ -3,7 +3,6 @@ import { renderGroups } from './groups.js';
 import { renderCreateNewPeriod } from './createPeriod.js';
 import { loadPeriod } from './sportList.js';
 import { disconnect } from './admin.js';
-import { uploadStudentData, uploadPaidData, uploadTeacherData } from './studentUpload.js';
 import { sendEmails } from './sendEmails.js';
 
 export function loadPeriodList() {
@@ -33,20 +32,20 @@ export function renderPeriodList(json) {
         <option value="Users">Users</option>
         <option value="createNewGroup">+ Create new group</option>
       </select></p>
+      <input id="newGroupName" type="text" placeholder="Group name"/>
+      <textarea id="emails" col=30 rows=15>fredric@example.com</textarea>
       
       <h3>Send login codes</h3>
       <p>Send login codes to all email addresses.</p>
       <button id="sendEmails" class="download" type="button">Send login codes <i class="fas fa-paper-plane"></i></button>
-      <small>Warning: Tell the users to check their spam folder!</small>
-      <small>Note: It may take a few minutes to send all emails</small>
-      <small>Note: This won't send an email to addresses that have been emailed in the past 30 days</small>
+      <small>Warning: Tell the users to check their spam folder!</small><br/>
+      <small>Note: It may take a few minutes to send all emails</small><br/>
+      <small>Note: This won't send an email to addresses that have been emailed in the past 30 days</small><br/>
       <p>Or, send a login code to a single email address.</p>
-      <input id="sendSingleEmail" type="text" placeholder="Email"/>
+      <input id="sendSingleEmail" type="email" placeholder="Email"/>
+      <button id="sendSingleEmailButton" class="download" type="button"><i class="fas fa-paper-plane"></i></button>
       `;
     document.querySelector('.periodlist').innerHTML = '<h2 id="periodlist" class="visuallyhidden">Period List</h2><ul></ul>';
-    document.getElementById('studentDataUpload').onchange = uploadStudentData;
-    document.getElementById('paidStudentDataUpload').onchange = uploadPaidData;
-    document.getElementById('teacherDataUpload').onchange = uploadTeacherData;
     document.getElementById('sendEmails').onclick = sendEmails;
   }
   

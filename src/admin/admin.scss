@@ -172,6 +172,10 @@ main button {
   cursor: pointer;
 }
 
+main button.sendSingleEmailButton {
+  width: auto;
+}
+
 main input[type=checkbox], main input[type=radio] {
   display: inline;
   margin: 0;
