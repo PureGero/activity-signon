@@ -1,7 +1,7 @@
 import post from './post.js';
 
-export let groups = [];
-let groupCounts = null;
+export let globalGroups = [];
+let groups = null;
 let total = 0;
 let emailsSent = 0;
 
