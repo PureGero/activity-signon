@@ -172,7 +172,12 @@ main button {
   cursor: pointer;
 }
 
-main button.sendSingleEmailButton {
+main button#sendSingleEmail {
+  display: inline;
+}
+
+main button#sendSingleEmailButton {
+  display: inline;
   width: auto;
 }
 

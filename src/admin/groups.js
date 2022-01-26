@@ -1,6 +1,6 @@
 import post from './post.js';
 
-export let globalGroups = [];
+export let groups = [];
 let groupCounts = null;
 let total = 0;
 let emailsSent = 0;
@@ -34,30 +34,44 @@ export function requestGroups() {
     if (err || json.error) {
       throw err || json.error;
     } else {
-      groupCounts = json.groups;
+      groups = json.groups;
       globalGroups = Object.keys(json.groups).sort();
       total = json.total;
       emailsSent = json.emailsSent;
-      renderStudentCounts();
+      renderGroupList();
+      renderGroupEmails();
     }
   });
 }
 
 export function renderGroups() {
-  if (groupCounts === null) {
+  if (groups === null) {
     requestGroups();
   } else {
-    renderStudentCounts();
+    renderGroupList();
+    renderGroupEmails();
   }
 }
 
-function renderStudentCounts() {
-  const studentCounts = document.getElementById('studentCounts');
+function renderGroupList() {
+  const groupList = document.getElementById('groupList');
 
-  if (studentCounts) {
-    studentCounts.innerHTML = Object.entries(groupCounts).map(
-      ([key, value]) => `${key}: ${value} user${value == 1 ? '' : 's'}`
-    ).join('<br/>');
+  if (groupList) {
+    groupList.innerHTML = `
+      ${globalGroups.map(group => `<option value="${group}">${group}</option>`)}
+      <option value="createNewGroup">+ Create new group</option>
+    `;
+  }
+}
+
+function renderGroupEmails() {
+  const groupList = document.getElementById('groupList');
+  const groupEmails = document.getElementById('groupEmails');
+
+  if (groupList && groupEmails) {
+    console.log('Selected group ' + groupList.value);
+
+    groupEmails.innerHTML = !groups[groupList.value] ? '' : groups[groupList.value].join('\n');
   }
 
   const emailsToSend = document.getElementById('emailsToSend');

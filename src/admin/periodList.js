@@ -3,7 +3,7 @@ import { renderGroups } from './groups.js';
 import { renderCreateNewPeriod } from './createPeriod.js';
 import { loadPeriod } from './sportList.js';
 import { disconnect } from './admin.js';
-import { sendEmails } from './sendEmails.js';
+import { sendEmails, sendSingleEmail } from './sendEmails.js';
 
 export function loadPeriodList() {
   document.querySelector('.periodlist').innerHTML = '<h2 id="periodlist">Loading...</h2>';
@@ -28,25 +28,32 @@ export function renderPeriodList(json) {
       <h2 id="name">Activity Signon</h2>
       <h3>Manage groups</h3>
       <p>Add user email addresses to groups to allow them access to activities.</p>
-      <p>Viewing group <select id="groups">
-        <option value="Users">Users</option>
-        <option value="createNewGroup">+ Create new group</option>
+      <p>Viewing group <select id="groupList">
+        <option>Loading...</option>
       </select></p>
       <input id="newGroupName" type="text" placeholder="Group name"/>
-      <textarea id="emails" col=30 rows=15>fredric@example.com</textarea>
+      <textarea id="groupEmails" rows=15 placeholder="example@mail.com"></textarea>
+      <button id="saveGroups">Save <i class="fas fa-save"></i></button>
+      <small>Tip: You can copy and paste from Excel into this field</small><br/>
       
       <h3>Send login codes</h3>
       <p>Send login codes to all email addresses.</p>
       <button id="sendEmails" class="download" type="button">Send login codes <i class="fas fa-paper-plane"></i></button>
+      <small>Warning: This will send <span id="emailsToSend">?</span> emails!</small><br/>
       <small>Warning: Tell the users to check their spam folder!</small><br/>
       <small>Note: It may take a few minutes to send all emails</small><br/>
-      <small>Note: This won't send an email to addresses that have been emailed in the past 30 days</small><br/>
+      <small>Note: This won't send emails to those already emailed this month</small><br/>
+
+      <h3>Send a single login code</h3>
       <p>Or, send a login code to a single email address.</p>
       <input id="sendSingleEmail" type="email" placeholder="Email"/>
-      <button id="sendSingleEmailButton" class="download" type="button"><i class="fas fa-paper-plane"></i></button>
+      <button id="sendSingleEmailButton" class="download" type="button"><i class="fas fa-paper-plane"></i></button><br/>
+      <small>Note: This will send emails to those already emailed this month</small><br/>
       `;
     document.querySelector('.periodlist').innerHTML = '<h2 id="periodlist" class="visuallyhidden">Period List</h2><ul></ul>';
     document.getElementById('sendEmails').onclick = sendEmails;
+    document.getElementById('sendSingleEmailButton').onclick = () => sendSingleEmail(document.getElementById('sendSingleEmail'));
+    document.getElementById('groupList').onchange = renderGroups;
   }
   
   // Update

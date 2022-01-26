@@ -1,6 +1,9 @@
 import post from './post.js';
 import { requestGroups } from './groups.js';
 
+const r = 40;
+const r2pi = r * Math.PI * 2;
+
 export function sendEmails() {
   const button = this;
 
@@ -10,22 +13,8 @@ export function sendEmails() {
     if (err || json.error) {
       button.innerHTML = err || json.error;
     } else {
-      const r = 40;
-      const r2pi = r * Math.PI * 2;
-      const total = json.emails.length;
-      const progressBox = document.body.appendChild(document.createElement('div'));
-      progressBox.className = 'progress__box';
-      progressBox.innerHTML = `
-        <div class="container">
-          <div class="title">Sending emails</div>
-          <svg style="transform: rotate(-90deg); stroke-dasharray: ${r2pi}; stroke-dashoffset: ${r2pi}" height="100" width="100">
-            <circle cx="${r + 10}" cy="${r + 10}" r="${r}" stroke="${config.lightColor}" stroke-width="6" fill="none" />
-          </svg>
-          <div class="progress" style="margin-top: -${r*2 + 1}px">0%</div>
-          <p>Sent <span class="count">0</span>/${total} emails...</p>
-          <p class="error"></p>
-        </div>`;
-      sendEmail(json.emailsPerSecond, json.emails, r2pi, total, 0, (count) => {
+      createProgressBox(json.emails.length);
+      sendEmail(json.emailsPerSecond, json.emails, total, 0, (count) => {
         button.innerHTML = `Sent ${count} emails`;
         requestGroups();
       });
@@ -33,7 +22,30 @@ export function sendEmails() {
   });
 }
 
-function sendEmail(emailsPerSecond, emailsToSend, r2pi, total, count, callback) {
+export function sendSingleEmail(input) {
+  const email = input.value;
+  createProgressBox(1);
+  sendEmail(json.emailsPerSecond, [ input ], 1, 0, (count) => {
+    input.value = '';
+  });
+}
+
+function createProgressBox(total) {
+  const progressBox = document.body.appendChild(document.createElement('div'));
+  progressBox.className = 'progress__box';
+  progressBox.innerHTML = `
+    <div class="container">
+      <div class="title">Sending emails</div>
+      <svg style="transform: rotate(-90deg); stroke-dasharray: ${r2pi}; stroke-dashoffset: ${r2pi}" height="100" width="100">
+        <circle cx="${r + 10}" cy="${r + 10}" r="${r}" stroke="${config.lightColor}" stroke-width="6" fill="none" />
+      </svg>
+      <div class="progress" style="margin-top: -${r*2 + 1}px">0%</div>
+      <p>Sent <span class="count">0</span>/${total} emails...</p>
+      <p class="error"></p>
+    </div>`;
+}
+
+function sendEmail(emailsPerSecond, emailsToSend, total, count, callback) {
   const emails = emailsToSend.splice(0, emailsPerSecond);
 
   if (!emails.length) {
